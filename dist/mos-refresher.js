@@ -38,6 +38,7 @@ angular.module('mos.mobile.components', [])
         var events;
         var elementHeight;
         var hideTimer;
+        var scrollOffset = 0;
 
         var options = {
           distanceToRefresh: parseInt(attrs.distance) || defaults.distance,
@@ -92,6 +93,7 @@ angular.module('mos.mobile.components', [])
           $ionicGesture.off(events.down, 'dragdown', onDragDown);
           $ionicGesture.off(events.end, 'dragend', onDragEnd);
 
+          scrollable.off("scroll",adjustOnScroll);
           $element.off('transitionend', onAnimationEnd);
           $element.off('$destroy', onDestroy);
         }
@@ -102,6 +104,10 @@ angular.module('mos.mobile.components', [])
         function init() {
           scrollable = findScrollabe($element);
           if (!scrollable) throw new Error("Refresher must be a child of ion-content");
+
+          var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+          // Fix for mobile chrome
+          if(isChrome) $element.css('position', 'fixed');
 
           rotableElement = angular.element($element[0].querySelector('.mos-rotate'));
 
@@ -130,10 +136,14 @@ angular.module('mos.mobile.components', [])
           if ($element.hasClass('mos-hiding')) {
             // If it's a TransitionEvent and there is a timer, cancel it (otherwise the events will be fired twice)
             if (e && hideTimer) $timeout.cancel(hideTimer);
-
+            
+			      cssTransform($element, '');
             $element.addClass('mos-hidden');
-            $element.removeClass('mos-hiding');
+            $element.removeClass('mos-hiding mos-refreshed');
             dispatch('onFinish');
+          }
+          if ($element.hasClass('mos-will-refresh')) {
+            $element.removeClass('mos-will-refresh');
           }
         }
 
@@ -150,14 +160,21 @@ angular.module('mos.mobile.components', [])
          * Fired when the user starts dragging the scrollable up
          */
         function onDragStart(e) {
+          if(!drag.enabled) return;
           var currentTop = (scrollCtrl ? scrollCtrl.getScrollPosition().top : scrollable[0].scrollTop);
           if (currentTop <= options.maxStartY) {
+            scrollOffset = (scrollCtrl ? 0: currentTop);
             if (rotableElement.length === 0) rotableElement = angular.element($element[0].querySelector('.mos-rotate'));
-            drag.enabled = true;
+            drag.active = true;
+            drag.enabled = false;
+            
             $element.removeClass('mos-hidden');
             $element.addClass('mos-dragging');
             dispatch('onDragStart');
             elementHeight = $element[0].offsetHeight;
+
+            // Move to top
+            move(0);
           }
         }
 
@@ -165,11 +182,11 @@ angular.module('mos.mobile.components', [])
          * Fired when the user releases the scrollable
          */
         function onDragEnd(e) {
-          if (!drag.enabled) return;
+          if (!drag.active) return;
           e.gesture.preventDefault();
           e.gesture.srcEvent.preventDefault();
 
-          drag.enabled = false;
+          drag.active = false;
 
           $element.removeClass('mos-dragging');
           cssTransform(rotableElement, '');
@@ -181,7 +198,7 @@ angular.module('mos.mobile.components', [])
           if (drag.mustRefresh) {
             refresh();
           } else {
-            reset();
+            reset(false);
           }
         }
 
@@ -189,7 +206,7 @@ angular.module('mos.mobile.components', [])
          * Fired when the user is dragging the scrollable
          */
         function onDragDown(e) {
-          if (!drag.enabled) return;
+          if (!drag.active) return;
 
           e.gesture.preventDefault();
           e.gesture.srcEvent.preventDefault();
@@ -222,17 +239,26 @@ angular.module('mos.mobile.components', [])
           }
         }
 
+        function adjustOnScroll(e) {
+          scrollOffset = e.target.scrollTop;
+          move(options.distanceToRefresh);
+        }
+
         /**
          * Sets the component to its "Refreshing" state and notifies the clients
          */
         function refresh() {
-          $element.addClass('mos-refreshing');
+          $element.addClass('mos-refreshing mos-will-refresh');
+          scrollable.on("scroll",adjustOnScroll);
+
           move(options.distanceToRefresh);
+
 
           var promise = dispatch('onRefresh');
           if (promise && promise.then) {
             promise.then(function() {
-              reset();
+              scrollable.off("scroll",adjustOnScroll);
+              reset(true);
             });
           }
 
@@ -241,35 +267,39 @@ angular.module('mos.mobile.components', [])
         /**
          * Sets the component to its original "hidden" state and notifies the clients
          */
-        function reset() {
+        function reset(fromRefresh) {
           scope.loading = false;
           drag = {
-            enabled: false,
+            active: false,
             distance: 0,
-            mustRefresh: false
+            mustRefresh: false,
+            enabled: true
           }
           $element.removeClass('mos-refresh mos-refreshing mos-dragging');
 
           // If it's not hidden, we need to animate.
           if (!$element.hasClass('mos-hidden')) {
+            if(fromRefresh) $element.addClass('mos-refreshed');
             $element.addClass('mos-hiding');
             // In some browsers, if the element is not visible, the transitionend event is not fired, so a timer fallback is used
             hideTimer = $timeout(onAnimationEnd, MOS_REFRESHER_CONFIG.hidingTime);
             dispatch('onHiding');
           }
-
-          move(0);
+          if(fromRefresh)
+            move(options.distanceToRefresh, 'scale(0.1)');
+          else
+            move(0);
         }
 
         /**
          * Moves the element to the specified position using CSS3 transformations
          */
-        function move(y) {
+        function move(y, extraTransform) {
           var currentHeight = $element[0].offsetHeight;
           // Sometimes if the element is hidden, the offsetHeight is 0, so I used the last known height
           if (currentHeight === 0) currentHeight = elementHeight;
 
-          cssTransform($element, 'translate3d( 0, ' + (y - elementHeight - 2) + 'px, 0 )');
+          cssTransform($element, 'translate3d( 0, ' + (y+scrollOffset - elementHeight - 2) + 'px, 0 )' + (extraTransform?' '+extraTransform:''));
         }
 
 
