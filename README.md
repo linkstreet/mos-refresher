@@ -23,9 +23,13 @@ To do
 
 ### Usage
 
-To do
+#### HTML
 
-----------
+    <mos-refresher 
+        on-refresh="refresh()"
+        mos-spinning-icon="ion-ios-refresh"
+        icon-size="50"
+        icon-refresh-color="#367B6F">
 
 ### Thanks
 
