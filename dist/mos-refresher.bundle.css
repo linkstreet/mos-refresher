@@ -17,9 +17,9 @@ mos-refresher {
   mos-refresher.mos-refresh {
     opacity: 1; }
   mos-refresher.mos-hiding, mos-refresher.mos-will-refresh {
-    -webkit-transition: -webkit-transform .25s ease;
-    -moz-transition: -moz-transform .25s ease;
-    transition: transform .25s ease; }
+    -webkit-transition: -webkit-transform 0.25s ease;
+    -moz-transition: -moz-transform 0.25s ease;
+    transition: transform 0.25s ease; }
   mos-refresher.mos-hiding.mos-refreshed {
     -webkit-transition: -webkit-transform 0.15s;
     -moz-transition: -moz-transform 0.15s;
@@ -34,9 +34,9 @@ mos-refresher {
     -moz-animation: rotating 0.5s linear infinite;
     animation: rotating 0.5s linear infinite; }
   mos-refresher.mos-hiding .mos-rotate {
-    -webkit-transition: -webkit-transform .25s ease;
-    -moz-transition: -moz-transform .25s ease;
-    transition: transform .25s ease;
+    -webkit-transition: -webkit-transform 0.25s ease;
+    -moz-transition: -moz-transform 0.25s ease;
+    transition: transform 0.25s ease;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
@@ -48,7 +48,6 @@ mos-refresher {
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg); }
-
   to {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -61,7 +60,6 @@ mos-refresher {
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg); }
-
   to {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -74,7 +72,6 @@ mos-refresher {
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg); }
-
   to {
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
@@ -83,12 +80,15 @@ mos-refresher {
 
 mos-refresher.mos-arrow .icon {
   margin: 4px; }
+
 mos-refresher.mos-arrow .mos-icon {
-  -webkit-transition: -webkit-transform .25s ease;
-  -moz-transition: -moz-transform .25s ease;
-  transition: transform .25s ease; }
+  -webkit-transition: -webkit-transform 0.25s ease;
+  -moz-transition: -moz-transform 0.25s ease;
+  transition: transform 0.25s ease; }
+
 mos-refresher.mos-arrow .mos-rotate, mos-refresher.mos-arrow .mos-icon {
   display: inline-block; }
+
 mos-refresher.mos-arrow .mos-content {
   color: #000;
   background-color: #ACACAC;
@@ -97,6 +97,7 @@ mos-refresher.mos-arrow .mos-content {
   border-width: 1px;
   padding: 5px;
   border-radius: 10px; }
+
 mos-refresher.mos-arrow.mos-refresh .mos-icon {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
