@@ -31,7 +31,25 @@ To do
         icon-size="50"
         icon-refresh-color="#367B6F">
 
+#### Javascript
+
+
+    refresh: function () {
+        
+        var defer = $q.defer();
+
+        Api.fetch('GET', '/dummy').then(function (response) {
+            // On Success
+            defer.resolve();
+        }, function () {
+            // On failure
+            defer.resolve();
+        });
+        
+        return defer.promise;
+    }
+
+
 ### Thanks
 
 I want to mention that my initial inspiration for this component was the one found at https://github.com/apeatling/web-pull-to-refresh/
-
