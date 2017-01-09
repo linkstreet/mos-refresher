@@ -13,6 +13,9 @@ It comes with a few out-of-the-box options in case you prefer to add it without 
 
 http://codepen.io/martinmoscovich/pen/MYGRoj
 
+### Instruction
+
+This plugin depends on promise for hiding the spinner so you need to inject `$q` to your controller. 
 
 ### Installation
 
