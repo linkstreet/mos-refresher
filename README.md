@@ -30,6 +30,7 @@ To do
         mos-spinning-icon="ion-ios-refresh"
         icon-size="50"
         icon-refresh-color="#367B6F">
+    </mos-refresher>
 
 #### Javascript
 
