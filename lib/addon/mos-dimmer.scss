@@ -1,0 +1,147 @@
+//colors
+$color_java_approx: #e4a11f; // Edited
+$color_downriver_approx: #dfdfdf;
+$color_downriver_approx: #4c9689; // Edited
+$color_emperor_approx: #4f4d49;
+$gray: gray;
+
+.dimmer-holder {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background: $gray;
+    display: none;
+    z-index: 99;
+}
+#dimmer {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 19px;
+    height: 19px;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 100%;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: 19px 19px $color_downriver_approx,-19px 19px $color_downriver_approx, -19px -19px $color_downriver_approx,19px -19px $color_downriver_approx;
+}
+@keyframes cssload-spin {
+    0% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px 19px $color_java_approx,-19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx;
+    }
+    100% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px 19px $color_java_approx,-19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx;
+    }
+    25% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx, 19px 19px $color_java_approx;
+    }
+    50% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: -19px -19px $color_java_approx, 19px -19px $color_downriver_approx, 19px 19px $color_java_approx,-19px 19px $color_downriver_approx;
+    }
+    75% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px -19px $color_downriver_approx, 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx;
+    }
+}
+@-o-keyframes cssload-spin {
+    0% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx;
+    }
+    100% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx;
+    }
+    25% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx, 19px 19px $color_java_approx;
+    }
+    50% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: -19px -19px $color_java_approx, 19px -19px $color_downriver_approx, 19px 19px $color_java_approx,-19px 19px $color_downriver_approx;
+    }
+    75% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px -19px $color_downriver_approx, 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx;
+    }
+}
+@-ms-keyframes cssload-spin {
+    0% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx;
+    }
+    100% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx;
+    }
+    25% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx, 19px 19px $color_java_approx;
+    }
+    50% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: -19px -19px $color_java_approx, 19px -19px $color_downriver_approx, 19px 19px $color_java_approx,-19px 19px $color_downriver_approx;
+    }
+    75% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px -19px $color_downriver_approx, 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx;
+    }
+}
+@-webkit-keyframes cssload-spin {
+    0% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx;
+    }
+    100% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx;
+    }
+    25% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx, 19px 19px $color_java_approx;
+    }
+    50% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: -19px -19px $color_java_approx, 19px -19px $color_downriver_approx, 19px 19px $color_java_approx,-19px 19px $color_downriver_approx;
+    }
+    75% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px -19px $color_downriver_approx, 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx;
+    }
+}
+@-moz-keyframes cssload-spin {
+    0% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx;
+    }
+    100% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx;
+    }
+    25% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: -19px 19px $color_downriver_approx, -19px -19px $color_java_approx,19px -19px $color_downriver_approx, 19px 19px $color_java_approx;
+    }
+    50% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: -19px -19px $color_java_approx, 19px -19px $color_downriver_approx, 19px 19px $color_java_approx,-19px 19px $color_downriver_approx;
+    }
+    75% {
+        //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+        box-shadow: 19px -19px $color_downriver_approx, 19px 19px $color_java_approx, -19px 19px $color_downriver_approx, -19px -19px $color_java_approx;
+    }
+}
+.mos-refreshing #dimmer {
+    animation: cssload-spin ease infinite 3.4s;
+}
